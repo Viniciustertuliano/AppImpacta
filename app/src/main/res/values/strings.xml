@@ -1,3 +1,7 @@
 <resources>
-    <string name="app_name">Meu Primeiro App</string>
+    <string name="app_name">Álcool ou Gasolina</string>
+    <string name="stringalcool">Digite o preço do Alcool:</string>
+    <string name="valueGasolina">Digite o preço da gasolina:</string>
+    <string name="hintValue">Digite o preço por litro em reais</string>
+    <string name="textclick">Clique aqui</string>
 </resources>
