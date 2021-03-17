@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -13,28 +14,33 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
     }
 
-    fun calcular(v:View){
-        val alcool: EditText = findViewById(R.id.et_valorAlcool)
-        val gasolina: EditText = findViewById(R.id.et_valorGasolina)
+    fun calcImc(v:View){
+        val peso: EditText = findViewById(R.id.edt_peso)
+        val altura: EditText = findViewById(R.id.edt_altura)
 
-        var relacao: Double
+        var txtresposta: TextView = findViewById(R.id.tv_result)
 
-        val valoralcool:String? = alcool.text.toString()
-        val valorgasolina:String? = gasolina.text.toString()
+        var resp: Double
 
-        if (valoralcool != null && valoralcool!= "" &&
-            valorgasolina != null && valorgasolina != ""){
-            relacao = valoralcool.toDouble() / valorgasolina.toDouble()
+        val valorpeso:String? = peso.text.toString()
+        val valoraltura:String? = altura.text.toString()
 
-            if (relacao < 0.7) {
-                Toast.makeText(this, "Abasteça com Alcool", Toast.LENGTH_LONG).show()
-            } else {
-                Toast.makeText(this, "Abasteça com Gasolina", Toast.LENGTH_LONG).show()
-            }
-        }
-        else{
+        if (valorpeso != null && valorpeso != "" && valorpeso != "0"
+            && valoraltura != null && valoraltura != "" && valoraltura != "0"){
+
+            resp = valorpeso.toDouble() / (valoraltura.toDouble() * valoraltura.toDouble())
+
+            if (resp < 18.5){txtresposta.setText("Abaixo do peso")}
+            else if ( resp >= 18.5 && resp <= 24.9){ txtresposta.setText("Peso normal")}
+            else if ( resp >= 25 && resp <= 29.9){txtresposta.setText("Sobrepeso")}
+            else if ( resp >= 30 && resp <= 34.9){txtresposta.setText("Obesidade grau 1")}
+            else if ( resp >= 35 && resp <= 39.9){txtresposta.setText("Obesidade grau 2")}
+            else {txtresposta.setText("Obesidade grau 3")}
+
+        }else{
             Toast.makeText(this, "Digite o valor correto", Toast.LENGTH_LONG).show()
         }
+
     }
 
 }
