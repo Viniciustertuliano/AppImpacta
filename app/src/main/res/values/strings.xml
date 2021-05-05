@@ -1,6 +1,0 @@
-<resources>
-    <string name="app_name">Calculadora IMC</string>
-    <string name="hint_peso">Digite sua peso </string>
-    <string name="hint_altura">Digite sua altura </string>
-    <string name="textclick">Clique para calcular</string>
-</resources>
